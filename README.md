@@ -1,46 +1,50 @@
-# ai-reality-check
+# Project `ai-reality-check`
 
 
 
-# Agent to Compare Files: Intel RateDiff
+# Agent to Compare Files: `Intel RateDiff`
 
 ## Purpose
-The 'Intel RateDiff' is a custom-built tool designed to streamline the comparison of rate data across CSV files, with a focus on clarity and actionable insights. This functionality is particularly useful for projects like Intel Rates, where rate integrity and change tracking are critical.
+The `Intel RateDiff` is a custom-built tool designed to streamline the comparison of rate data across CSV files, with a focus on clarity and actionable insights. This functionality is particularly useful for projects like `Intel Rates`, where rate integrity and change tracking are critical.
+
+Disclaimer: Copilot likes to be creative and may produce accurate or inaccurte, relevant or irrelevant text to accopmany the output file.  Regardless of output consistency issues, the focus of this agent is to produce an accurate output data file.  
 
 ## Functionality
 The agent is designed to:
 - Compare two CSV files containing rate data.
 - Identify differences such as new entries, removed entries, and changes in rate values.
 - Output a merged CSV file that includes an additional column explaining the differences between the two datasets.
+  
+You need to understand how to get results in `rate_differences.csv` and 
+[How to interpret column `_merge`](#how-to-interpret-column-_merge))
 
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## Value
+Instead of manually comparing two long files, you get a short summary of rows with differences.
 
 ## How to use
 - Start `Intel RateDiff` agent  
-- Add your 2 files to the prompt.  Your files can have any name, but think of them as `file_left.csv` and `file_right.csv`.  
+- Add your 2 files to the prompt.  Your files can have any name, but think of them in order from older to newer,  
+  from left to right as `file_left.csv` and `file_right.csv`  
 - Wait for Copilot to do what it does, and 
-- Downloaded an output file named `rate_differences.csv`  
+- Downloaded an output file named `rate_differences.csv`
 
-Disclaimer: Copilot likes to be creative and may produce accurate or inaccurte, relevant or irrelevant text to accopmany the output file.  Regardless of consistency issues, the focus of this agent to produce an accurate output data file.  
+
+
 
 You need to understand how to get and interpret results in `rate_differences.csv`  
 
 ```mermaid
-  flowchart TB
-
-    subgraph A "**Input: Intel Rate Files**"
-      direction LR
-      f1("`**Previous**
-      file_left.csv`") & f2("`**New**
-      file_right.csv`") 
-    end  
-
-    subgraph B "**Output: Differences**"
-      f3("`**rate_differences.csv**
+  flowchart LR
+    subgraph OUTPUT
+      f3("`rate_differences.csv`")
     end
-
-    A --> B
+    subgraph INPUTS
+      direction LR
+      f1("`**Previous data**
+      file_left.csv`") -->  f2("`**New data**
+      file_right.csv`") 
+    end
+    
 ```
 
 Steps:  
@@ -49,7 +53,7 @@ Steps:
 - Filter out `_merge` column by values: `left_only` and `right_only`. 
 - The resulting rows are the differences between the two files
 
-How to interpret column `_merge`: 
+## How to interpret column `_merge`: 
 
 The `_merge` column in the `rate_differences.csv` file indicates the source of each row in the merged dataset. Here's how to interpret the values in the _merge column: 
 
