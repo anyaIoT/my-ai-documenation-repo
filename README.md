@@ -22,17 +22,18 @@ You need to understand how to get results in `rate_differences.csv` and
 Instead of manually comparing two long files, you get a short summary of rows with differences.
 
 ## How to use
-- Start `Intel RateDiff` agent  
-- Add your 2 files to the prompt.  Your files can have any name, but think of them in order from older to newer,  
+1. Start `Intel RateDiff` agent  
+2. Add your 2 files to the prompt.  Your files can have any name, but think of them in order from older to newer,  
   from left to right as `file_left.csv` and `file_right.csv`  
-- Wait for Copilot to do what it does, and 
-- Downloaded an output file named `rate_differences.csv`
+3. Wait for Copilot to do what it does, and 
+4. Downloaded an output file named `rate_differences.csv`
 
 
 
 
 You need to understand how to get and interpret results in `rate_differences.csv`  
 
+- Dynamic Mermaid Diagram (if enabled)
 ```mermaid
   flowchart LR
     subgraph OUTPUT
@@ -47,13 +48,16 @@ You need to understand how to get and interpret results in `rate_differences.csv
     
 ```
 
-Steps:  
-- Open file `rate_differences.csv`  
-- Enable filter by column headers  
-- Filter out `_merge` column by values: `left_only` and `right_only`. 
-- The resulting rows are the differences between the two files
+- Static Mermaid Diagram  
+![Static Mermaid Diagram](vis/Intel_RateDiff_mermaid.PNG)
 
-## How to interpret column `_merge`: 
+ 
+5. Open file `rate_differences.csv`  
+6. Enable filter by column headers  
+7. Filter out `_merge` column by values: `left_only` and `right_only`. 
+8. The resulting rows are the differences between the two files
+
+## How to interpret column `_merge` 
 
 The `_merge` column in the `rate_differences.csv` file indicates the source of each row in the merged dataset. Here's how to interpret the values in the _merge column: 
 
@@ -62,3 +66,6 @@ The `_merge` column in the `rate_differences.csv` file indicates the source of e
 - `right_only`: These rows are present only in `file_right.csv` and not in `file_left.csv`. These are considered new rows. 
 
 - note: explain modified rows (if so far so good)
+
+- Example: Differences Output
+![Example: Differences Output](vis/Intel_RateDiff.PNG)
